@@ -1,11 +1,15 @@
 import requests
+import os
+
+
+EVENTBRITE_OAUTH_TOKEN= os.environ['EVENTBRITE_OAUTH_TOKEN']
 
 url = "https://www.eventbriteapi.com/v3/"
 
 response = requests.get(
     url + "users/me/owned_events/?expand=venue",
-    headers = {
-        "Authorization": "Bearer QDVP7QBIJIWV2FWZ7NQ7",
+    Headers = {
+        "Authorization": "Bearer " + EVENTBRITE_OAUTH_TOKEN,
     }
 )
 
@@ -18,7 +22,7 @@ print my_events
 
 res = requests.post(
 	url + "events/",
-	headers = {"Authorization": "Bearer QDVP7QBIJIWV2FWZ7NQ7"},
+	headers = {"Authorization": "Bearer " + EVENTBRITE_OAUTH_TOKEN},
 	params = {
 	"event.name.html" : "New Event",
 	"event.description.html" : "Check out my awesome new event!",
@@ -39,7 +43,7 @@ print new_event
 
 update = requests.post(
 	url + "events/18835645924/ticket_classes/",
-	headers = {"Authorization": "Bearer QDVP7QBIJIWV2FWZ7NQ7"},
+	headers = {"Authorization": "Bearer " + EVENTBRITE_OAUTH_TOKEN},
 	params = {
 	"ticket_class.name" : "General Admission",
 	"ticket_class.free" : True,
