@@ -1,0 +1,9 @@
+# The .gitignore file.
+
+# Prevent needless uploads of compiled python code.
+*.py[cod]
+
+# Environment items that shouldn't be uploaded anywhere.
+.env
+env
+env*
